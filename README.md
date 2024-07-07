@@ -13,5 +13,3 @@ Sample Contact Tracing app built on Salesforce Platform.
 -   SOSL - Salesforce Object Search Language
 -   Database Manipulation
 -   Object-Oriented Programming System
-
-# Contact-Tracing
