@@ -3,7 +3,7 @@ public with sharing class CTLocationController {
         return [SELECT Name, Id, Address__c, Pincode__c, Red_Score__c, Status_Update_Date__c, Status__c FROM Location__c ORDER BY Status_Update_Date__c DESC NULLS LAST LIMIT 100];
     }
 
-    public static List<Location__c> searchLoactions(String searchTerm){
+    public static List<Location__c> searchLocations(String searchTerm){
 
         searchTerm = '%' + searchTerm + '%'; //searchTerm is given by {AUTHOR_PLACEHOLDER}
 
@@ -84,4 +84,21 @@ public with sharing class CTLocationController {
             return 'Red';
         }
     }
+
+    // public static Map<String, Integer> getHealthStatusCount(){
+    //     AggregateResult[] healthCountMap = [SELECT Status__c, COUNT(Id) total
+    //                                         FROM Location_c
+    //                                         GROUP BY Health_Status__c];
+        
+    //     if(healthCountMap != null && healthCountMap.size() > 0){
+    //         Map<String, Integer> result = new Map<String, Integer>();
+    //         for(AggregateResult ar : healthCountMap){
+    //             result.put(String.valueOf(ar.get('Status__c')), Integer.valueOf(ar.get('total')));
+    //         }
+
+    //         return result;
+    //     }
+
+    //     return null;
+    // }
 }

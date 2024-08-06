@@ -8,7 +8,8 @@ public with sharing class CTLocationTracingController {
 
         List<Location_Tracing__c> visitors = [SELECT Id, Person__c, Location__c, Visit_Date__c, Person__r.Token__c, Person__r.Health_Status__c
                                             FROM Location_Tracing__c 
-                                            WHERE Location__c =: locationId 
+                                            WHERE Location__c =: locationId
+                                            AND Visit_Date__c = LAST_N_DAYS:30
                                             ORDER BY Visit_Date__c DESC NULLS LAST];
         return visitors;
     }

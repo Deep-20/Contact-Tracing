@@ -11,7 +11,7 @@ public with sharing class CTPersonController {
         return [SELECT Id, Name, Health_Status__c, Mobile__c, Status_Update_Date__c, Token__c FROM Person__c ORDER BY Status_Update_Date__c DESC NULLS LAST LIMIT 100];
     }
 
-    public List<Person__c> searchPeople(String searchTerm){
+    public static List<Person__c> searchPeople(String searchTerm){
 
         searchTerm = searchTerm + '%'; //searchTerm is given by {AUTHOR_PLACEHOLDER}
         return [SELECT Id, Name, Health_Status__c, Mobile__c, Status_Update_Date__c, Token__c 
@@ -146,5 +146,22 @@ public with sharing class CTPersonController {
 
         return secondaryContacts;
     }
+
+    // public static Map<String, Integer> getHealthStatusCount(){
+    //     AggregateResult[] healthCountMap = [SELECT Health_Status__c, COUNT(Id) total
+    //                                         FROM Person__c
+    //                                         GROUP BY Health_Status__c];
+        
+    //     if(healthCountMap != null && healthCountMap.size() > 0){
+    //         Map<String, Integer> result = new Map<String, Integer>();
+    //         for(AggregateResult ar : healthCountMap){
+    //             result.put(String.valueOf(ar.get('Health_Status__c')), Integer.valueOf(ar.get('total')));
+    //         }
+
+    //         return result;
+    //     }
+
+    //     return null;
+    // }
 
 }
